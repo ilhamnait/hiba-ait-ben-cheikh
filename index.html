@@ -6,150 +6,244 @@
   <title>Hiba Ait Ben Cheikh — Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --main-color: #8B4B3A;      /* Brun terre cuite */
+      --accent-color: #D6A77A;    /* Beige doré */
+      --text-color: #3A2E2A;      /* Gris anthracite doux */
+      --text-light: #6E5B52;      /* Taupe clair */
+      --bg-color: #FAF6F1;        /* Crème clair */
+      --dark-bg: #3C2F2F;         /* Fond foncé */
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f9fafc;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       scroll-behavior: smooth;
     }
+
+    /* NAVBAR */
     nav.navbar {
-      background-color: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      background-color: #fffaf7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     .navbar-brand {
       font-weight: 700;
-      color: #1a1a1a !important;
+      color: var(--main-color) !important;
+      letter-spacing: 0.5px;
     }
     .nav-link {
-      color: #555 !important;
-      margin: 0 8px;
+      color: var(--text-light) !important;
+      margin: 0 10px;
+      font-weight: 500;
     }
     .nav-link:hover {
-      color: #007bff !important;
+      color: var(--main-color) !important;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
+
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-	  background-size: cover;
-	  background-position: center;
-	  background-repeat: no-repeat;
-	  min-height: 100vh;    
-	  background-image: url("images/bghero.jpeg");
+      background-image: url("images/hero.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #e8dcd2; /* couleur de fond similaire au bois clair */
+      position: relative;
       padding: 5rem 1rem;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(139, 75, 58, 0.35);
+      backdrop-filter: brightness(0.9);
     }
+	.bg-flow {
+	  background: rgba(139, 75, 58, 0.35);
+      backdrop-filter: brightness(0.9);
+	  }
+
+    .hero h1, .hero p, .hero a {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #E0CFC2;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    }
+
     .hero p {
-      font-size: 1.2rem;
-      color: #555;
+      font-size: 1.15rem;
+      color: #E0CFC2;
       max-width: 700px;
       margin: 1rem auto 2rem;
     }
-    .btn-primary {
-      background-color: #007bff;
+
+    /* BOUTONS */
+    .btn-secondary {
+      background-color: var(--main-color);
       border: none;
       border-radius: 30px;
       padding: 0.7rem 1.8rem;
+      color: #E0CFC2;
+      font-weight: 500;
+      transition: all 0.3s ease;
     }
-    section {
-      padding: 5rem 0;
+    .btn-secondary:hover {
+      background-color: #E0CFC2;
+      color: var(--text-color);
     }
+    .btn-outline-secondary {
+      border: 2px solid #E0CFC2;
+      color: #E0CFC2;
+      border-radius: 30px;
+      padding: 0.7rem 1.8rem;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-secondary:hover {
+	  border: 2px solid #E0CFC2;
+      background-color: #E0CFC2;
+      color: var(--text-color);
+    }
+
+    /* TITRES */
     h2 {
       font-weight: 700;
+      color: var(--main-color);
       margin-bottom: 1.5rem;
-      color: #1a1a1a;
+      letter-spacing: 1px;
     }
+    h5 {
+      color: var(--main-color);
+    }
+
+    /* TEXTE */
+    p, small {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* PROJETS */
     .card-custom {
       border: none;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background-color: #fff;
       transition: transform .3s ease, box-shadow .3s ease;
-      cursor: pointer;
     }
-
-	.modal-body .carousel {
-	  overflow: visible !important;
-	  padding: 0 80px; /* crée de l'espace à gauche et à droite pour les boutons */
-	}
-
-	.modal-body .carousel {
-	  overflow: visible !important;
-	  padding: 0 80px;
-	}
-
-	.carousel-control-prev,
-	.carousel-control-next {
-	  position: absolute;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  width: 46px;
-	  height: 46px;
-	  background: none;
-	  border: 2px solid #000;
-	  border-radius: 50%;
-	  z-index: 5;
-	  opacity: 0.9;
-	  transition: all 0.3s ease;
-	}
-
-	/* Flèches noires */
-	.carousel-control-prev-icon,
-	.carousel-control-next-icon {
-	  filter: invert(0%) brightness(0%); /* noir pur */
-	  width: 20px;
-	  height: 20px;
-	}
-
-	/* Position : hors image, mais dans la modale */
-	.carousel-control-prev { left: 10px; }
-	.carousel-control-next { right: 10px; }
-
-	/* Effet au survol : fond blanc, flèche noire */
-	.carousel-control-prev:hover,
-	.carousel-control-next:hover {
-	  background-color: #fff;
-	  border-color: #000;
-	}
-	.carousel-control-prev:hover .carousel-control-prev-icon,
-	.carousel-control-next:hover .carousel-control-next-icon {
-	  filter: invert(0%) brightness(0%); /* reste noir */
-	}
-
-	@media (max-width: 768px) {
-	  .modal-body .carousel {
-		padding: 0 40px;
-	  }
-	  .carousel-control-prev,
-	  .carousel-control-next {
-		width: 36px;
-		height: 36px;
-	  }
-	}
-
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
     .project-img {
       border-radius: 16px 16px 0 0;
       height: 220px;
       object-fit: cover;
     }
+	.modal-body .carousel {
+	overflow: visible !important;
+	padding: 0 80px;
+	/* crée de l'espace à gauche et à droite pour les boutons */
+	}
+
+	.modal-body .carousel {
+		overflow: visible !important;
+		padding: 0 80px;
+	}
+
+	.carousel-control-prev,
+	.carousel-control-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 46px;
+		height: 46px;
+		background: none;
+		border: 2px solid invert(22%) sepia(25%) saturate(743%) hue-rotate(340deg) brightness(92%) contrast(88%);
+		border-radius: 50%;
+		z-index: 5;
+		opacity: 0.9;
+		transition: all 0.3s ease;
+	}
+
+	/* Flèches noires */
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon {
+		filter: invert(22%) sepia(25%) saturate(743%) hue-rotate(340deg) brightness(92%) contrast(88%);
+	}
+
+	/* Position : hors image, mais dans la modale */
+	.carousel-control-prev {
+		left: 10px;
+	}
+
+	.carousel-control-next {
+		right: 10px;
+	}
+
+	/* Effet au survol : fond blanc, flèche noire */
+	.carousel-control-prev:hover,
+	.carousel-control-next:hover {
+		background-color: #fff;
+		border-color: invert(22%) sepia(25%) saturate(743%) hue-rotate(340deg) brightness(92%) contrast(88%);
+	}
+
+	.carousel-control-prev:hover .carousel-control-prev-icon,
+	.carousel-control-next:hover .carousel-control-next-icon {
+		  filter: invert(22%) sepia(25%) saturate(743%) hue-rotate(340deg) brightness(92%) contrast(88%);
+	}
+
+	@media (max-width: 768px) {
+		.modal-body .carousel {
+			padding: 0 40px;
+		}
+
+		.carousel-control-prev,
+		.carousel-control-next {
+			border: 2px solid var(--main-color);
+			
+		  background: transparent;
+			width: 36px;
+			height: 36px;
+		}
+	}
+	.title {
+	 color: var(--main-color);
+	}
+	
+    #projects {
+      background-color: #fffaf7;
+    }
+
+    #contact {
+      background-color: #fffaf7;
+    }
+
+    /* FOOTER */
     footer {
-      background-color: #1a1a1a;
-      color: #fff;
+      background-color: var(--dark-bg);
+      color: #F0E6DD;
       text-align: center;
       padding: 2rem 0;
-      margin-top: 5rem;
-    }
-	.modal-lg, .modal-xl {
-        --bs-modal-width: 1200px;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
+
 <body>
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">Hiba AIT BEN CHEIKH</a>
@@ -167,27 +261,28 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1>FUTURE ARCHITECTE<br><span class="text-secondary"> EN MASTER 2 </span></h1>
-	  <p class="text-dark">Passionnée par la fabrique du territoire, la sensibilité des espaces et l’art de concevoir la ville comme un paysage habité. J’explore la manière dont l’architecture façonne les émotions, révèle les lieux et donne forme à notre rapport au monde urbain.</p>
+      <h1>FUTURE ARCHITECTE<br><span>EN MASTER 2</span></h1>
+      <p>Passionnée par la fabrique du territoire, la sensibilité des espaces et l’art de concevoir la ville comme un paysage habité. J’explore la manière dont l’architecture façonne les émotions, révèle les lieux et donne forme à notre rapport au monde urbain.</p>
       <a href="pdf/CV_CHEIKH_HIBA_AR_ARCHITECTES.pdf" class="btn btn-secondary me-2" download>Télécharger le CV</a>
-      <a href="pdf/PORTFOLIO_ Hiba.pdf" class="btn btn-outline-secondary" download>Télécharger le Portfolio</a>
-      <a href="#contact" class="btn btn-secondary me-2">Me contacter</a>
+      <a href="pdf/PORTFOLIO_ Hiba.pdf" class="btn btn-outline-secondary me-2" download>Télécharger le Portfolio</a>
+      <a href="#contact" class="btn btn-secondary">Me contacter</a>
     </div>
   </section>
   
-  <section id="about">
+  <section id="about" class="py-5">
     <div class="container">
 	  <h2 class="text-center">À PROPOS</h2>
-	  <strong>Hiba AIT BEN CHEIKH</strong>, <small>étudiante en Master 2 d’architecture, actuellement à la recherche d’un stage — de préférence pré-embauche — d’une durée de deux mois ou plus. Mon approche se nourrit d’un profond intérêt pour l’habiter, le tissu urbain et les mécanismes qui orchestrent l’équilibre d’un territoire. Penser la ville, pour moi, c’est penser la cohérence de ses structures, la justesse de ses espaces, la manière dont un lieu peut dialoguer avec ceux qui le traversent et révéler une identité sensible, presque intime.</small>
+	  <strong class="title">Hiba AIT BEN CHEIKH</strong>, <small>étudiante en Master 2 d’architecture, actuellement à la recherche d’un stage — de préférence pré-embauche — d’une durée de deux mois ou plus. Mon approche se nourrit d’un profond intérêt pour l’habiter, le tissu urbain et les mécanismes qui orchestrent l’équilibre d’un territoire. Penser la ville, pour moi, c’est penser la cohérence de ses structures, la justesse de ses espaces, la manière dont un lieu peut dialoguer avec ceux qui le traversent et révéler une identité sensible, presque intime.</small>
 	  <p class="mt-2"><small>Je m’intéresse tout particulièrement à la conception de l’habitat, à la psychologie des espaces et à la compréhension de la ville comme système vivant, complexe et stratifié. Mes réflexions portent également sur la perméabilisation des sols, et sur la façon d’inscrire ces transformations sans renier le caractère architectural et urbain des lieux. Mon ambition est de contribuer à une pensée urbaine capable de composer avec l’existant, d’anticiper les usages et de donner naissance à des espaces lisibles, structurés, sensibles et profondément ancrés dans leur territoire.
 	</small></p>
 
     </div>
   </section>
 
-  <section id="projects" class="pt-2">
+  <section id="projects" class="py-3">
     <div class="container">
       <h2 class="text-center">PROJETS</h2>
       <div class="row g-4">
@@ -195,8 +290,8 @@
           <div class="card card-custom" data-bs-toggle="modal" data-bs-target="#project1Modal">
             <img src="images/projet1_1.png" class="project-img" alt="Projet 1">
             <div class="card-body">
-              <div class="text-center"><b>Réinventer l’entrée de Calas</b></div><br>
-              <small class="text-muted"><strong>Dates:</strong> Février 2025 _ Juillet 2025 <br><strong>Localisation:</strong> Calas, France <br><strong>Collaboration:</strong> Mairie de Calas, Cabriès</small>
+              <div class="text-center title"><b>Réinventer l’entrée de Calas</b></div><br>
+              <small class="text-muted text"><strong>Dates:</strong> Février 2025 _ Juillet 2025 <br><strong>Localisation:</strong> Calas, France <br><strong>Collaboration:</strong> Mairie de Calas, Cabriès</small>
             </div>
           </div>
         </div>
@@ -204,8 +299,8 @@
           <div class="card card-custom" data-bs-toggle="modal" data-bs-target="#project2Modal">
             <img src="images/projet2_1.png" class="project-img" alt="Projet 2">
             <div class="card-body">
-              <div class="text-center"><b>Acclimater la Zone Commerciale d’Avignon</b></div><br>
-              <small class="text-muted"><strong>Dates:</strong> Octobre 2024 _ Février 2025 <br><strong>Localisation:</strong> ZAC Bel Air, Avignon (84), France</small>
+              <div class="text-center title"><b>Acclimater la Zone Commerciale d’Avignon</b></div><br>
+              <small class="text-muted text"><strong>Dates:</strong> Octobre 2024 _ Février 2025 <br><strong>Localisation:</strong> ZAC Bel Air, Avignon (84), France</small>
             </div>
           </div>
         </div>
@@ -213,8 +308,8 @@
           <div class="card card-custom" data-bs-toggle="modal" data-bs-target="#project3Modal">
             <img src="images/projet3_1.png" class="project-img" alt="Projet 3">
             <div class="card-body">
-              <div class="text-center"><b>Équipement sportif à Borély</b></div><br>
-              <small class="text-muted"><strong>Dates:</strong> Février 2024 _ Juillet 2024 <br><strong>Localisation:</strong> Hippodrome de Borély, Marseille, France</small>
+              <div class="text-center title"><b>Équipement sportif à Borély</b></div><br>
+              <small class="text-muted text"><strong>Dates:</strong> Février 2024 _ Juillet 2024 <br><strong>Localisation:</strong> Hippodrome de Borély, Marseille, France</small>
             </div>
           </div>
         </div>
@@ -223,8 +318,8 @@
 		  <div class="card card-custom" data-bs-toggle="modal" data-bs-target="#project4Modal">
 			<img src="images/projet4_1.png" class="project-img" alt="Projet 4">
 			<div class="card-body">
-			  <div class="text-center"><b>Habitat collectif sur l’îlot Bon Pasteur</b></div><br>
-			  <small class="text-muted"><strong>Dates :</strong> Octobre 2023 _ Février 2024 <br>
+			  <div class="text-center title"><b>Habitat collectif sur l’îlot Bon Pasteur</b></div><br>
+			  <small class="text-muted text"><strong>Dates :</strong> Octobre 2023 _ Février 2024 <br>
 			  <strong>Localisation :</strong> Place Jules Guesdes, Marseille<br> 
 			  <strong>Collaboration:</strong> MPM Métropole Aix-Marseille et Ville de Marseille</small>
 			</div>
@@ -237,7 +332,7 @@
 		  	<br><br><br>
 			<img src="images/projet5_1.png" class="project-img" alt="Projet 5">
 			<div class="card-body">
-			  <div class="text-center"><b>Illustrations</b></div><br><br>
+			  <div class="text-center title"><b>Illustrations</b></div><br><br>
 			</div>
 		  </div>
 		</div>
@@ -383,7 +478,7 @@
 	  </div>
 	</div>
 
-	<section id="experience" class="bg-light pt-2">
+	<section id="experience" class="py-5">
 		<div class="container">
 		  <h2 class="text-center mb-5">EXPÉRIENCES</h2>
 		  <div class="row g-4">
@@ -409,7 +504,7 @@
 		</div>
 	</section>
 
-  <section id="contact" class="pt-2 pb-0">
+  <section id="contact" class="py-3">
     <div class="container text-center">
       <h2>CONTACT</h2>
       <div class="row justify-content-center">
